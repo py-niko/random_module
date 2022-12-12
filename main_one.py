@@ -37,7 +37,7 @@ while True:
         N = ['нет', 'no', 'н', 'y', 'ytn']
         Y = ['да','д', 'а', 'l', 'lf']
         if answer.lower() in N:
-            print('Еще увидимся! \nПока! \n\n\n\n\n')
+            print('Еще увидимся! \nПока! \n\n\n')
 
         elif answer.lower() in Y:
             while True:
