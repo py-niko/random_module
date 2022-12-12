@@ -1,37 +1,40 @@
-from random import*
-
-#Входные данные
-num = str(randint(1,100))
-k = [str(i) for i in range(1,101)]
-print('Добро пожаловать в числовую угадайку')
-
-# Функция корректности данных
-def is_valid(s):
-    if s in k:
-        return True
-    else:
-        return False
-
-#Функция сравнения
-def comparison(s):
-    if num == s:
-        print('Вы угадали, поздравляем!', 'Спасибо, что играли в числовую угадайку. Еще увидимся...', sep = '\n')
-        return print(f'Количество попыток: {count}')
-    elif num > s:
-        print('Ваше число меньше загаданного, попробуйте еще разок')
-    else:
-        print('Ваше число больше загаданного, попробуйте еще разок')
-count = 0
-# цикл игры
-while True:
-    s = input('Введите число от 1 до 100: ')
-    count += 1
-    if is_valid(s) == True:
-        comparison(s)
-
-    else:
-        print('А может быть все-таки введем целое число от 1 до 100?')
-    count = 0
-    print(num)
+import random
 
 
+def is_valid(string, upper):
+    return 1 <= int(string) <= upper
+
+
+def get_guess(upper):
+    while True:
+        guess = input(f'Введите число от 1 до {upper}: ')
+        if is_valid(guess, upper):
+            return int(guess)
+        else:
+            print(f'А может быть все-таки введем целое число от 1 до {upper}?')
+
+
+def play():
+    print('Добро пожаловать в числовую угадайку')
+    upper = int(input("Введите верхнюю границу: "))
+    target = random.randint(1, upper)
+    counter = 0
+    while True:
+        answer = get_guess(upper)
+        if answer < target:
+            print('Ваше число меньше загаданного, попробуйте еще разок')
+            counter += 1
+        elif answer > target:
+            print('Ваше число больше загаданного, попробуйте еще разок')
+            counter += 1
+        else:
+            print('Вы угадали, поздравляем!')
+            counter += 1
+            break
+    print(f'Вам понадобилось {counter} попыток.')
+    print('Спасибо, что играли в числовую угадайку. Еще увидимся...')
+    if input('Хотите сыграть снова? д/н: ') == 'д':
+        play()
+
+
+play()

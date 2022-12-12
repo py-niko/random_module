@@ -30,17 +30,20 @@ def game():
                 counter += 1
                 print('Выше число меньше загаданного')
 
+
     print(f'Спасибо за игру! Еще раз ("ДА", "НЕТ")?')
     answer = input()
     N = ['нет', 'no', 'н', 'y', 'ytn']
     Y = ['да','д', 'а', 'l', 'lf']
     if answer.lower() in N:
         print('Еще увидимся!')
+        exit()
     elif answer.lower() in Y:
         while True:
             game()
     else:
         print('Я вас не понимаю! Играем или нет?')
+
 
 game()
 
